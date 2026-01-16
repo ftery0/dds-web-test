@@ -1,6 +1,6 @@
 import styled, { css, CSSObject } from "styled-components";
 import { ButtonSize } from "./type";
-import { DodamLightTheme } from "@/styles/src/DodamTheme/DodamTheme";
+import { DodamLightTheme } from "@/styles/DodamTheme/DodamTheme";
 
 export const PageIndicatorWrap = styled.div`
   width: auto;
