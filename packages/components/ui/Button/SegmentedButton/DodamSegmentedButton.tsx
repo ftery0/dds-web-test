@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, SetStateAction, Dispatch } from "react";
 import styled from "styled-components";
-import { DodamTheme, DodamTypography } from "@dds-web/styles";
-import { DodamShape } from "@dds-web/styles";
+import { DodamTheme, DodamTypography } from "@/styles";
+import { DodamShape } from "@/styles";
 
 type ButtonType = "block" | "inline";
 

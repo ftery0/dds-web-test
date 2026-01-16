@@ -1,4 +1,4 @@
-import { DodamTypography } from '@dds-web/styles';
+import { DodamTypography } from '@/styles';
 import React, {
   ChangeEventHandler,
   CSSProperties,
@@ -6,8 +6,8 @@ import React, {
   useState,
 } from 'react';
 import styled, { CSSObject, useTheme } from 'styled-components';
-import { Eye, EyeSlash, XmarkCircle, ExclamationmarkCircle } from '@dds-web/assets';
-import { hexToRgba } from '@dds-web/utils';
+import { Eye, EyeSlash, XmarkCircle, ExclamationmarkCircle } from '@/assets';
+import { hexToRgba } from '@/utils';
 
 type InputType = 'text' | 'password';
 

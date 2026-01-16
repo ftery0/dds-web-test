@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { DodamFilledButton } from './DodamFilledButton';
-import { ChevronLeft, File, Photo } from '@dds-web/assets';
+import { ChevronLeft, File, Photo } from '@/assets';
 import React from 'react';
 
 const meta = {

@@ -1,5 +1,5 @@
 import { css } from "styled-components";
-import { hexToRgba } from "@dds-web/utils";
+import { hexToRgba } from "@/utils";
 
 export const DodamShadow = Object.freeze({
   Normal: css`

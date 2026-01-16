@@ -8,7 +8,7 @@ import {
   PretendardLight,
   PretendardExtraLight,
   PretendardThin,
-} from "@dds-web/assets";
+} from "@/assets";
 
 export const DodamFont = Object.freeze([
   {

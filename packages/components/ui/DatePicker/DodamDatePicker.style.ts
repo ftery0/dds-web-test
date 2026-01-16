@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { DodamShape, typographyType, DodamTypography } from "@dds-web/styles";
+import { DodamShape, typographyType, DodamTypography } from "@/styles";
 import { DateType } from "./DodamDatePicker";
 
 export const DatePickerContainer = styled.div<{

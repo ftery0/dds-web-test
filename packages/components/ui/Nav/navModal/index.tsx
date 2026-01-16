@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./style";
-import { ChevronRight } from "@dds-web/assets";
+import { ChevronRight } from "@/assets";
 import { DodamModal, DodamToggleButton } from "../..";
 import { NAV_BAR_MODAL_DAUTH, NAV_BAR_MODAL_ITEM } from "../constant";
 import { ETheme } from "../navBar";

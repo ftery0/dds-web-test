@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import styled, { css } from "styled-components";
 import { Dialog } from "./Dialog";
-import { DodamColor } from "@dds-web/foundations";
-import { DodamThemeProvider } from "@dds-web/styles";
+import { DodamColor } from "@/foundations";
+import { DodamThemeProvider } from "@/styles";
 
 interface DodamAlertProps {
   message: string;

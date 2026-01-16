@@ -1,4 +1,4 @@
-import { Home, Calender,Note, MoonPlus, Dev, Chart, People, Megaphone } from "@dds-web/assets";
+import { Home, Calender,Note, MoonPlus, Dev, Chart, People, Megaphone } from "@/assets";
 
 import { type Interpolation } from "styled-components";
 

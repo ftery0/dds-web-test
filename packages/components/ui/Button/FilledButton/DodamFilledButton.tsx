@@ -8,7 +8,7 @@ import {
   DodamTheme,
   DodamTypography,
   typographyType,
-} from "@dds-web/styles";
+} from "@/styles";
 import { FlexLayout } from "../../../layout";
 
 type attendantsType = "right" | "left";

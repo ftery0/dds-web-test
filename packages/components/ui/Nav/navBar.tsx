@@ -1,6 +1,6 @@
 import React from "react";
-import { DodamLogo, Menu } from "@dds-web/assets";
-import { useNavBar } from "@dds-web/hooks";
+import { DodamLogo, Menu } from "@/assets";
+import { useNavBar } from "@/hooks";
 import SideBarModal from "./navModal";
 import * as S from "./style";
 import { NAV_LINKS, Eigenvalues } from "./constant";

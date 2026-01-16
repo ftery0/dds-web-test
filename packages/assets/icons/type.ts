@@ -1,4 +1,4 @@
-import {DodamTheme} from "@dds-web/styles";
+import {DodamTheme} from "@/styles";
 import { type Interpolation } from "styled-components";
 
 export interface StaticIconProps {

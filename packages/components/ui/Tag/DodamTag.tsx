@@ -1,6 +1,6 @@
 import React, { MouseEventHandler } from "react";
 import styled, { CSSObject, RuleSet } from "styled-components";
-import { DodamTypography } from "@dds-web/styles";
+import { DodamTypography } from "@/styles";
 
 type TagColor = "red" | "blue" | "default";
 

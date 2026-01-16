@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DodamShape, DodamTypography } from "@dds-web/styles";
+import { DodamShape, DodamTypography } from "@/styles";
 
 export const ErrorBox = styled.div`
     width: 100%;

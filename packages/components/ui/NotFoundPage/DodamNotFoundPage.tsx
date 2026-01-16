@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { StatusCode, DodamSadEmoji } from "@dds-web/assets";
-import { DodamTypography } from "@dds-web/styles";
+import { StatusCode, DodamSadEmoji } from "@/assets";
+import { DodamTypography } from "@/styles";
 import { DodamFilledButton } from "../Button";
 
 export const DodamNotFoundPage = () => {

@@ -5,8 +5,8 @@ import {
   DodamGlobalStyles,
   DodamLightTheme,
   DodamDarkTheme,
-} from "@dds-web/styles";
-import { DodamColor } from "../../foundations/src";
+} from "@/styles";
+import { DodamColor } from "@/foundations";
 const preview: Preview = {
   parameters: {
     backgrounds:{

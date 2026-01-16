@@ -1,5 +1,5 @@
-import { DodamShape, DodamTypography, ShapeSizeType } from "@dds-web/styles";
-import { DodamColor } from "@dds-web/foundations";
+import { DodamShape, DodamTypography, ShapeSizeType } from "@/styles";
+import { DodamColor } from "@/foundations";
 import React, { MouseEventHandler } from "react";
 import styled, { CSSProperties, RuleSet, css } from "styled-components";
 import { Column, FlexLayout, Row } from "../../layout";

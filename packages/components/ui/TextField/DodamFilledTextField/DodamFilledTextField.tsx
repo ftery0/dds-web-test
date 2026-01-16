@@ -4,10 +4,10 @@ import React, {
   KeyboardEventHandler,
 } from "react";
 import styled, { CSSObject, useTheme } from "styled-components";
-import { XmarkCircle, Eye, EyeSlash } from "@dds-web/assets";
-import { ExclamationmarkCircle } from "@dds-web/assets";
-import { DodamShape, DodamTypography } from "@dds-web/styles";
-import { hexToRgba } from "@dds-web/utils";
+import { XmarkCircle, Eye, EyeSlash } from "@/assets";
+import { ExclamationmarkCircle } from "@/assets";
+import { DodamShape, DodamTypography } from "@/styles";
+import { hexToRgba } from "@/utils";
 
 type InputType = "text" | "password";
 

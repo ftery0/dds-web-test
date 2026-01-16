@@ -1,5 +1,5 @@
 import { DefaultTheme } from "styled-components";
-import { DodamColor } from "@dds-web/foundations";
+import { DodamColor } from "@/foundations";
 
 export const DodamLightTheme: DefaultTheme = Object.freeze({
   primaryNormal: DodamColor.blue45,

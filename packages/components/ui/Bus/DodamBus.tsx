@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import {BUS_SEAT} from "./BusSeat";
-import {DodamColor} from "@dds-web/foundations";
+import {DodamColor} from "@/foundations";
 
 interface BusProps {
 	clickEvent: (bus: number) => void;

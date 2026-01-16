@@ -1,12 +1,12 @@
 import React from "react";
 import * as S from "./DodamDatePicker.style";
-import { useDatePicker } from "@dds-web/hooks";
-import { ChevronRight, ChevronLeft, Calender } from "@dds-web/assets";
+import { useDatePicker } from "@/hooks";
+import { ChevronRight, ChevronLeft, Calender } from "@/assets";
 import { DAY } from "./constant";
 import { DodamHeading2 } from "../Typography";
-import { typographyType } from "@dds-web/styles";
+import { typographyType } from "@/styles";
 import { CSSObject } from "styled-components";
-import { DodamTheme } from "@dds-web/styles";
+import { DodamTheme } from "@/styles";
 
 export type DateType = "date" | "MonthDay";
 type DatePickerMode = "entire" | "future";

@@ -1,6 +1,6 @@
 import React from "react";
-import { DownLoadArrow, File } from "@dds-web/assets";
-import { DodamShape, DodamTypography } from "@dds-web/styles";
+import { DownLoadArrow, File } from "@/assets";
+import { DodamShape, DodamTypography } from "@/styles";
 import styled, { CSSObject } from "styled-components";
 
 export interface DodamNoticeFileProps {

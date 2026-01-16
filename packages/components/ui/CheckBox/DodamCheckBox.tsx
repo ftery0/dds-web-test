@@ -1,6 +1,6 @@
 import React, { HTMLAttributes, MouseEventHandler } from "react";
 import styled, { CSSObject } from "styled-components";
-import { Checkmark } from "@dds-web/assets";
+import { Checkmark } from "@/assets";
 
 type ButtonColor = "red" | "blue";
 
