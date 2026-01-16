@@ -8,7 +8,17 @@ import url from "@rollup/plugin-url";
 import dts from "rollup-plugin-dts";
 import copy from "rollup-plugin-copy";
 import replace from "@rollup/plugin-replace";
+import alias from "@rollup/plugin-alias";
+import { fileURLToPath } from "url";
+import path from "path";
 import pkg from "./package.json" assert { type: "json" };
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+// Path alias plugin
+const pathAliasPlugin = alias({
+  entries: [{ find: "@", replacement: path.resolve(__dirname, "packages") }],
+});
 
 const external = ["react", "react-dom", "styled-components"];
 
@@ -24,10 +34,11 @@ export default [
     ],
     external,
     plugins: [
+      pathAliasPlugin,
       resolve(),
       commonjs(),
       typescript({
-        tsconfig: "./tsconfig.base.json",
+        tsconfig: "./tsconfig.json",
         exclude: [/\.test.(js|jsx|ts|tsx)$/, /\.stories.(js|jsx|ts|tsx|mdx)$/],
         declaration: true,
         emitDeclarationOnly: true,
@@ -39,7 +50,7 @@ export default [
       url({
         include: ["**/*.otf"],
         limit: 0,
-        fileName: "types/assets/src/fonts/[name][extname]",
+        fileName: "assets/fonts/[name][extname]",
       }),
     ],
   },
@@ -54,10 +65,11 @@ export default [
     ],
     external,
     plugins: [
+      pathAliasPlugin,
       resolve(),
       commonjs(),
       typescript({
-        tsconfig: "./tsconfig.base.json",
+        tsconfig: "./tsconfig.json",
         exclude: [/\.test.(js|jsx|ts|tsx)$/, /\.stories.(js|jsx|ts|tsx|mdx)$/],
         declaration: true,
         emitDeclarationOnly: true,
@@ -69,7 +81,7 @@ export default [
       url({
         include: ["**/*.otf"],
         limit: 0,
-        fileName: "types/assets/src/fonts/[name][extname]",
+        fileName: "assets/fonts/[name][extname]",
       }),
     ],
   },
