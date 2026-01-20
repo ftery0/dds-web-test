@@ -22,7 +22,7 @@ pnpm add dds-web-test
 이 패키지는 다음 라이브러리가 필요합니다:
 
 ```bash
-npm install react react-dom styled-components
+npm install react react-dom styled-components @tanstack/react-query
 ```
 
 ## 🚀 시작하기
@@ -30,12 +30,12 @@ npm install react react-dom styled-components
 ### 기본 사용법
 
 ```tsx
-import { DodamButton, DodamThemeProvider, DodamLightTheme } from 'dds-web-test';
+import { DodamFilledButton, DodamThemeProvider, DodamLightTheme } from 'dds-web-test';
 
 function App() {
   return (
     <DodamThemeProvider theme={DodamLightTheme}>
-      <DodamButton>Click me</DodamButton>
+      <DodamFilledButton>Click me</DodamFilledButton>
     </DodamThemeProvider>
   );
 }
@@ -186,8 +186,8 @@ import { DodamThemeProvider, DodamDarkTheme } from 'dds-web-test';
 
    ↓ 
 
-4️⃣ 최종 최적화 (0.59MB)
-   ✅ 94.1% 크기 감소
+4️⃣ 최종 최적화 (702KB)
+   ✅ 99.1% 크기 감소
 ```
 
 ### 🟢 결과 및 최적화 전략
@@ -247,7 +247,7 @@ npm package: 702KB
 
 ```tsx
 // 메인 기능만 사용 (125KB)
-import { DodamButton } from 'dds-web-test';
+import { DodamFilledButton } from 'dds-web-test';
 
 // 아이콘 추가 필요시 (추가 128KB)
 import { Bell, School } from 'dds-web-test/icons';
