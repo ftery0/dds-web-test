@@ -5,21 +5,29 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  entry: ["packages/index.ts"],
+  entry: {
+    index: "packages/index.ts",
+    icons: "packages/icons.ts",
+  },
   format: ["cjs", "esm"],
   dts: false,
-  splitting: false,
-  sourcemap: true,
+  splitting: true,
+  sourcemap: false,
   clean: true,
   minify: true,
   treeshake: true,
   outDir: "dist",
-  external: ["react", "react-dom", "styled-components", "react-query"],
+  external: ["react", "react-dom", "styled-components", "@tanstack/react-query"],
   esbuildOptions(options) {
     options.alias = {
       "@": path.resolve(__dirname, "packages"),
     };
-    options.assetNames = "assets/[name]-[hash]";
+    options.loader = {
+      ".otf": "empty",
+      ".ttf": "empty",
+      ".woff": "empty",
+      ".woff2": "empty",
+    };
   },
   outExtension({ format }) {
     return {
