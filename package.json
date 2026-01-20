@@ -1,12 +1,17 @@
 {
-  "name": "@b1nd/dds-web-test",
-  "version": "0.1.0",
+  "name": "dds-web-test",
+  "version": "0.1.1",
+  "description": "Dodam Design System - React component library with styled-components",
+  "keywords": ["react", "design-system", "ui", "components", "styled-components", "typescript", "nextjs"],
+  "author": "Team B1ND",
+  "license": "MIT",
   "type": "module",
   "types": "dist/types/index.d.ts",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "private": false,
   "sideEffects": false,
+  "files": ["dist", "README.md"],
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
