@@ -1,9 +1,10 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot, Root } from "react-dom/client";
 import styled, { css } from "styled-components";
 import { Dialog } from "./Dialog";
 import { DodamColor } from "@/foundations";
 import { DodamThemeProvider } from "@/styles";
+import { DodamPortal } from "../../layout";
 
 interface DodamAlertProps {
   message: string;
@@ -91,61 +92,95 @@ const DodamConfirmComponent = ({
     private static instance: DodamDialogClass;
     private blockedEvents: EventListener[] = [];
     private routerBlocked = false;
-  
+    private currentRoot: Root | null = null;
+
     private constructor() {}
-  
+
     public static getInstance(): DodamDialogClass {
       if (!DodamDialogClass.instance) {
         DodamDialogClass.instance = new DodamDialogClass();
       }
       return DodamDialogClass.instance;
     }
-  
+
+    /**
+     * Gets or creates the portal root element from DodamProvider
+     */
+    private getPortalRoot(): HTMLElement {
+      let portalRoot = document.getElementById("dodam-portal-root");
+
+      if (!portalRoot) {
+        // Fallback: create a temporary container if DodamProvider is not found
+        console.warn(
+          "DodamProvider not found. Please wrap your app with <DodamProvider>. Using fallback container."
+        );
+        portalRoot = document.createElement("div");
+        portalRoot.id = "dodam-dialog-fallback";
+        document.body.appendChild(portalRoot);
+      }
+
+      return portalRoot;
+    }
+
     public alert(message: string, title?: string) {
       const container = document.createElement("div");
-      document.body.appendChild(container);
+      const portalRoot = this.getPortalRoot();
+      portalRoot.appendChild(container);
+
       this.disableScroll();
       this.blockAllEvents();
       this.blockRouterNavigation();
-  
+
       const close = () => {
         this.enableScroll();
         this.unblockAllEvents();
         this.unblockRouterNavigation();
-        ReactDOM.unmountComponentAtNode(container);
-        document.body.removeChild(container);
+
+        if (this.currentRoot) {
+          this.currentRoot.unmount();
+          this.currentRoot = null;
+        }
+
+        portalRoot.removeChild(container);
       };
-  
-      ReactDOM.render(
-        <DodamAlertComponent message={message} title={title} onClose={close} />,
-        container
+
+      this.currentRoot = createRoot(container);
+      this.currentRoot.render(
+        <DodamAlertComponent message={message} title={title} onClose={close} />
       );
     }
-  
+
     public confirm(message: string, title?: string): Promise<boolean> {
       return new Promise((resolve) => {
         const container = document.createElement("div");
-        document.body.appendChild(container);
+        const portalRoot = this.getPortalRoot();
+        portalRoot.appendChild(container);
+
         this.disableScroll();
         this.blockAllEvents();
         this.blockRouterNavigation();
-  
+
         const handleClose = (result: boolean) => {
           this.enableScroll();
           this.unblockAllEvents();
           this.unblockRouterNavigation();
-          ReactDOM.unmountComponentAtNode(container);
-          document.body.removeChild(container);
+
+          if (this.currentRoot) {
+            this.currentRoot.unmount();
+            this.currentRoot = null;
+          }
+
+          portalRoot.removeChild(container);
           resolve(result);
         };
-  
-        ReactDOM.render(
+
+        this.currentRoot = createRoot(container);
+        this.currentRoot.render(
           <DodamConfirmComponent
             message={message}
             title={title}
             onClose={handleClose}
-          />,
-          container
+          />
         );
       });
     }
