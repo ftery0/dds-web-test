@@ -27,16 +27,29 @@ npm install react react-dom styled-components @tanstack/react-query
 
 ## 🚀 시작하기
 
-### 기본 사용법
+### DodamProvider로 시작하기
+
+**DodamProvider**는 DDS의 핵심 Provider로, **Theme 관리**와 **Portal 컨테이너** 기능을 하나로 제공합니다.
+
+#### DodamProvider가 하는 일:
+- ✅ **Theme 관리**: 라이트/다크 테마 자동 적용
+- ✅ **Portal 컨테이너**: 모달/다이얼로그를 안전하고 안정적으로 렌더링
+
+### 기본 사용법 (React)
 
 ```tsx
-import { DodamFilledButton, DodamThemeProvider, DodamLightTheme } from 'dds-web-test';
+import { useState } from 'react';
+import { DodamProvider, DodamFilledButton } from 'dds-web-test';
 
 function App() {
+  const [isDark, setIsDark] = useState(false);
+
   return (
-    <DodamThemeProvider theme={DodamLightTheme}>
-      <DodamFilledButton>Click me</DodamFilledButton>
-    </DodamThemeProvider>
+    <DodamProvider theme={isDark ? "DARK" : "LIGHT"}>
+      <DodamFilledButton onClick={() => setIsDark(!isDark)}>
+        테마 전환
+      </DodamFilledButton>
+    </DodamProvider>
   );
 }
 ```
@@ -58,33 +71,26 @@ module.exports = {
 // app/layout.tsx
 'use client';
 
-import { DodamThemeProvider, DodamLightTheme } from 'dds-web-test';
+import { useState } from 'react';
+import { DodamProvider } from 'dds-web-test';
 
 export default function RootLayout({ children }) {
+  const [isDark, setIsDark] = useState(false);
+
   return (
     <html>
       <body>
-        <DodamThemeProvider theme={DodamLightTheme}>
+        <DodamProvider theme={isDark ? "DARK" : "LIGHT"}>
           {children}
-        </DodamThemeProvider>
+        </DodamProvider>
       </body>
     </html>
   );
 }
 ```
 
-## 📖 문서
-
-- **[DDS 공식 문서](https://dds.b1nd.com/)**
-- **[Storybook](https://6790af6f8be4854ca7b49f7e-gfjyrtgjug.chromatic.com/?path=/docs/ui-dodambutton-dodamcontentbutton--docs)**
-
-## 🏗️ 아키텍처
-
-### Foundation
-<img width="1570" alt="도담디자인시스템" src="https://github.com/user-attachments/assets/44e8e3e4-0364-4fa7-90d0-d4f03ecac669" />
-
-### Component
-<img width="1274" alt="도담도담 디자인시스템2" src="https://github.com/user-attachments/assets/f64b4ac7-5e48-49e5-ab2a-616dcca9b3a7" />
+> **중요**: `DodamProvider`는 앱의 **최상위(root)**에 한 번만 배치하면 됩니다.
+> 이것만으로 모든 컴포넌트에 테마가 적용되고, 모달/다이얼로그도 정상적으로 작동합니다.
 
 ## 🎨 주요 컴포넌트
 
@@ -122,24 +128,106 @@ export default function RootLayout({ children }) {
 
 ## 🎭 테마
 
-### 라이트 테마
+### DodamProvider (권장)
+
+**DodamProvider**는 Theme + Portal을 하나로 제공하는 통합 Provider입니다.
 
 ```tsx
-import { DodamThemeProvider, DodamLightTheme } from 'dds-web-test';
+import { DodamProvider } from 'dds-web-test';
 
-<DodamThemeProvider theme={DodamLightTheme}>
-  {/* ... */}
-</DodamThemeProvider>
+function App() {
+  return (
+    <DodamProvider theme="LIGHT"> {/* or "DARK" */}
+      <YourApp />
+    </DodamProvider>
+  );
+}
 ```
 
-### 다크 테마
+#### 테마 전환
 
 ```tsx
-import { DodamThemeProvider, DodamDarkTheme } from 'dds-web-test';
+import { useState } from 'react';
+import { DodamProvider } from 'dds-web-test';
 
-<DodamThemeProvider theme={DodamDarkTheme}>
-  {/* ... */}
-</DodamThemeProvider>
+function App() {
+  const [isDark, setIsDark] = useState(false);
+
+  return (
+    <DodamProvider theme={isDark ? "DARK" : "LIGHT"}>
+      <button onClick={() => setIsDark(!isDark)}>테마 전환</button>
+    </DodamProvider>
+  );
+}
+```
+
+---
+
+### DodamThemeProvider (레거시)
+
+테마만 필요한 경우 사용 가능합니다. (모달/다이얼로그 사용 시 Portal 에러 발생 가능)
+
+```tsx
+import { DodamThemeProvider } from 'dds-web-test';
+
+function App() {
+  return (
+    <DodamThemeProvider theme="LIGHT"> {/* or "DARK" */}
+      <YourApp />
+    </DodamThemeProvider>
+  );
+}
+```
+
+---
+
+### Portal 시스템
+
+`DodamProvider`는 내부적으로 Portal 컨테이너를 생성하여 모달과 다이얼로그를 안전하게 렌더링합니다.
+
+#### 모달 사용
+
+```tsx
+import { useState } from 'react';
+import { DodamProvider, DodamModal } from 'dds-web-test';
+
+function App() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <DodamProvider theme="LIGHT">
+      <button onClick={() => setIsOpen(true)}>모달 열기</button>
+
+      <DodamModal isOpen={isOpen} close={() => setIsOpen(false)}>
+        <div>모달 내용</div>
+      </DodamModal>
+    </DodamProvider>
+  );
+}
+```
+
+#### 다이얼로그 사용
+
+```tsx
+import { DodamProvider, DodamDialog } from 'dds-web-test';
+
+function App() {
+  const handleAlert = () => {
+    DodamDialog.alert('알림 메시지');
+  };
+
+  const handleConfirm = async () => {
+    const result = await DodamDialog.confirm('확인하시겠습니까?');
+    console.log(result); // true or false
+  };
+
+  return (
+    <DodamProvider theme="LIGHT">
+      <button onClick={handleAlert}>알림</button>
+      <button onClick={handleConfirm}>확인</button>
+    </DodamProvider>
+  );
+}
 ```
 
 ### Storybook 다크 모드 사용법
@@ -147,6 +235,19 @@ import { DodamThemeProvider, DodamDarkTheme } from 'dds-web-test';
 배경을 변경하고 theme 버튼을 클릭하여 모드를 변경할 수 있습니다.
 
 ![스크린샷 2025-05-02 오전 10 58 40](https://github.com/user-attachments/assets/3cd7f57a-890a-4f2b-b7d0-49d058dbbf0c)
+
+## 📖 문서
+
+- **[DDS 공식 문서](https://dds.b1nd.com/)**
+- **[Storybook](https://6790af6f8be4854ca7b49f7e-gfjyrtgjug.chromatic.com/?path=/docs/ui-dodambutton-dodamcontentbutton--docs)**
+
+## 🏗️ 아키텍처
+
+### Foundation
+<img width="1570" alt="도담디자인시스템" src="https://github.com/user-attachments/assets/44e8e3e4-0364-4fa7-90d0-d4f03ecac669" />
+
+### Component
+<img width="1274" alt="도담도담 디자인시스템2" src="https://github.com/user-attachments/assets/f64b4ac7-5e48-49e5-ab2a-616dcca9b3a7" />
 
 ## 🔄 디자인 시스템 경량화 
 
