@@ -1,50 +1,41 @@
-import {
-  PretendardBlack,
-  PretendardExtraBold,
-  PretendardBold,
-  PretendardSemiBold,
-  PretendardMedium,
-  PretendardRegular,
-  PretendardLight,
-  PretendardExtraLight,
-  PretendardThin,
-} from "@/assets";
+
+const CDN_BASE = "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/woff2";
 
 export const DodamFont = Object.freeze([
   {
     font: "Pretendard-Black",
-    url: PretendardBlack,
+    url: `${CDN_BASE}/Pretendard-Black.woff2`,
   },
   {
     font: "Pretendard-ExtraBold",
-    url: PretendardExtraBold,
+    url: `${CDN_BASE}/Pretendard-ExtraBold.woff2`,
   },
   {
     font: "Pretendard-Bold",
-    url: PretendardBold,
+    url: `${CDN_BASE}/Pretendard-Bold.woff2`,
   },
   {
     font: "Pretendard-SemiBold",
-    url: PretendardSemiBold,
+    url: `${CDN_BASE}/Pretendard-SemiBold.woff2`,
   },
   {
     font: "Pretendard-Medium",
-    url: PretendardMedium,
+    url: `${CDN_BASE}/Pretendard-Medium.woff2`,
   },
   {
     font: "Pretendard-Regular",
-    url: PretendardRegular,
+    url: `${CDN_BASE}/Pretendard-Regular.woff2`,
   },
   {
     font: "Pretendard-Light",
-    url: PretendardLight,
+    url: `${CDN_BASE}/Pretendard-Light.woff2`,
   },
   {
-    font: "Pretendrad-ExtraLight",
-    url: PretendardExtraLight,
+    font: "Pretendard-ExtraLight",
+    url: `${CDN_BASE}/Pretendard-ExtraLight.woff2`,
   },
   {
     font: "Pretendard-Thin",
-    url: PretendardThin,
+    url: `${CDN_BASE}/Pretendard-Thin.woff2`,
   },
 ]);
