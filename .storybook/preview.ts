@@ -10,10 +10,10 @@ import { DodamColor } from "@/foundations";
 const preview: Preview = {
   parameters: {
     backgrounds:{
-      default: "defalut",
+      default: "default",
       values: [
         {
-            name: "defalut",
+            name: "default",
             value:  DodamColor.netural99,
         }
     ],

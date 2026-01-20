@@ -11,6 +11,5 @@ export * from "./Modal";
 export * from "./CheckBox";
 export * from "./Divider";
 export * from "./Tag";
-export * from "./CheckBox";
 export * from "./NoticeFile";
 export * from "./Nav";

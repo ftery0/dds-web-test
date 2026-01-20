@@ -16,9 +16,6 @@ export default defineConfig({
   outDir: "dist",
   external: ["react", "react-dom", "styled-components", "react-query"],
   esbuildOptions(options) {
-    options.banner = {
-      js: '"use client";',
-    };
     options.alias = {
       "@": path.resolve(__dirname, "packages"),
     };
